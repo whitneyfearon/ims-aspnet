@@ -1,0 +1,14 @@
+username: meredith
+password: Qwerty1@
+
+username: admin
+password: Qwerty1@
+
+username: doctor
+password: Qwerty1@
+
+username: nurse
+password: Qwerty1@
+
+username: receptionist
+password: Qwerty1@

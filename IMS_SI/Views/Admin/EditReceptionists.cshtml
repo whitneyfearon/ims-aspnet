@@ -1,0 +1,139 @@
+﻿@using IMS_SI.Models
+@model IMS_SI.CollectionViewModels.ReceptionistCollection
+
+@{
+    ViewBag.Title = "EditReceptionists";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Receptionist</li>
+        <li class="active">Edit Receptionist</li>
+    </ol>
+</div>
+
+<h2>Edit Receptionist</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Receptionist.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.PhoneNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.PhoneNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @{
+            var bloodlist = new List<Receptionist>
+        {
+                new Receptionist {BloodGroup = "A+", Gender = "Male"},
+                new Receptionist {BloodGroup = "O+", Gender = "Female"},
+                new Receptionist {BloodGroup = "B+", Gender = "Other"},
+                new Receptionist {BloodGroup = "AB+"},
+                new Receptionist {BloodGroup = "A-"},
+                new Receptionist {BloodGroup = "O-"},
+                new Receptionist {BloodGroup = "B-"},
+                new Receptionist {BloodGroup = "AB-"}
+            };
+            var genderlist = new List<Receptionist>
+        {
+                new Receptionist {Gender = "Male"},
+                new Receptionist {Gender = "Female"},
+                new Receptionist {Gender = "Other"}
+            };
+            var statuslist = new List<Receptionist>
+        {
+                new Receptionist {Status = "Active"},
+                new Receptionist {Status = "Inactive"}
+            };
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Receptionist.BloodGroup, new SelectList(bloodlist, "BloodGroup", "BloodGroup"), "Select Blood Group", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Receptionist.BloodGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Receptionist.Gender, new SelectList(genderlist, "Gender", "Gender"), "Select Gender", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Receptionist.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receptionist.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receptionist.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receptionist.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Receptionist.Status, new SelectList(statuslist, "Status", "Status"), "Select Blood Group", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Receptionist.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListOfReceptionists")
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

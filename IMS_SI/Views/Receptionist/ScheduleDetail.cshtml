@@ -1,0 +1,93 @@
+﻿@model IMS_SI.Models.ReceptionistSchedule
+
+@{
+    ViewBag.Title = "ScheduleDetail";
+    Layout = "~/Views/Shared/_ReceptionistLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Schedule</li>
+        <li class="active">Your Schedule</li>
+    </ol>
+</div>
+
+<h2>Schedule Detail</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableStartDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableStartDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableEndDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableEndDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableStartTime)
+        </dt>
+
+        @if (@Model != null)
+        {
+            <dd>
+                @Model.AvailableStartTime.ToShortTimeString()
+            </dd>
+        }
+        else
+        {
+            <dd>
+
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableEndTime)
+        </dt>
+        @if (@Model != null)
+        {
+
+            <dd>
+                @Model.AvailableEndTime.ToShortTimeString()
+            </dd>
+
+        }
+        else
+        {
+            <dd>
+
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            Edit
+        </dt>
+
+        <dd>
+            <a href="@Url.Action("EditSchedule", new {id = Model.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a>
+        </dd>
+    </dl>
+</div>
+

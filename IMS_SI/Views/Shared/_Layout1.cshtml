@@ -1,0 +1,64 @@
+﻿
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>IMS</title>
+
+</head>
+
+<body>
+    <header class="justify-content-center">
+        <div class="container text-center">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+
+                <img src="~/Content/img/logo.png" style="width: 200px; height: 200px" />
+            </a>
+        </div>
+        <nav class="navbar navbar-expand-md navbar-light bg-dark container-fluid flex-md-column align-items-md-start text-center">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container border-container text-left">
+                <div class="navbar-collapse collapse" id="navbar5">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link border-0 text-white" })
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "Account", null,  new { @class = "nav-link border-0 text-white" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Register", "Register", "Account", null,  new { @class = "nav-link border-0 text-white" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script>
+</body>
+
+</html>
+

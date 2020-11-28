@@ -1,0 +1,30 @@
+﻿<div class="text-center">
+    <h1 class="text-danger">Access Denied</h1>
+    <h6 class="text-danger">You do not have persmission to view this resource</h6>
+    @if (@User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Return to Home", "Index", "Admin")
+    }
+    else if (@User.IsInRole("Doctor"))
+    {
+        @Html.ActionLink("Return to Home", "Index", "Doctor")
+    }
+    else if (@User.IsInRole("Patient"))
+    {
+        @Html.ActionLink("Return to Home", "Index", "Patient")
+    }
+    else if (@User.IsInRole("Receptionist"))
+    {
+        @Html.ActionLink("Return to Home", "Index", "Receptionist")
+    }
+    else if (@User.IsInRole("Nurse"))
+    {
+        @Html.ActionLink("Return to Home", "Index", "Nurse")
+    }
+    else
+    {
+        @Html.ActionLink("Go To Login", "Login", "Account")
+    }
+
+
+</div>

@@ -1,0 +1,86 @@
+﻿@model  IEnumerable<IMS_SI.Models.Schedule>
+
+@{
+    ViewBag.Title = "AllDoctorSchedule";
+    Layout = "~/Views/Shared/_NurseLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Doctor</li>
+        <li class="active">Doctor Schedule</li>
+    </ol>
+</div>
+
+<h2>Doctor Schedule</h2>
+
+<table id="table_id" class="table">
+    <thead>
+        <tr>
+            <th>
+                Doctor Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableStartDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableEndDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimePerPatient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            @*<th>Action</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableStartDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableEndDay)
+                </td>
+                <td>
+                    @item.AvailableStartTime.ToShortTimeString()
+                </td>
+                <td>
+                    @item.AvailableEndTime.ToShortTimeString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimePerPatient)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                @*<td>
+                    <a href="@Url.Action("EditSchedule", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a> |
+                    <a href="@Url.Action("DeleteSchedule", new {id = item.Id})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

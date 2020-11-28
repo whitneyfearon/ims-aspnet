@@ -1,0 +1,112 @@
+﻿@using System.Activities.Statements
+@using IMS_SI.Models
+@model IMS_SI.CollectionViewModels.ReceptionistScheduleCollection
+
+@{
+    ViewBag.Title = "AddReceptionistSchedule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Receptionist Schedule</li>
+        <li class="active">Add Receptionist Schedule</li>
+    </ol>
+</div>
+
+<h2>Add Receptionist Schedule</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.ReceptionistSchedule.ReceptionistId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ReceptionistSchedule.ReceptionistId, new SelectList(Model.Receptionists, "Id", "FullName"), "Select Receptionist", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.ReceptionistId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @{
+            var days = new List<ReceptionistSchedule>
+{
+                new ReceptionistSchedule {AvailableStartDay = "Monday"},
+                new ReceptionistSchedule {AvailableStartDay = "Tuesday"},
+                new ReceptionistSchedule {AvailableStartDay = "Wednesday"},
+                new ReceptionistSchedule {AvailableStartDay = "Thursday"},
+                new ReceptionistSchedule {AvailableStartDay = "Friday"},
+                new ReceptionistSchedule {AvailableStartDay = "Saturday"},
+                new ReceptionistSchedule {AvailableStartDay = "Sunday"}
+            };
+
+            var status = new List<ReceptionistSchedule>
+{
+                new ReceptionistSchedule {Status = "Active"},
+                new ReceptionistSchedule {Status = "Inactive"}
+            };
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceptionistSchedule.AvailableStartDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ReceptionistSchedule.AvailableStartDay, new SelectList(days, "AvailableStartDay", "AvailableStartDay"), "Select Start Day", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.AvailableStartDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceptionistSchedule.AvailableEndDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ReceptionistSchedule.AvailableEndDay, new SelectList(days, "AvailableStartDay", "AvailableStartDay"), "Select End Day", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.AvailableEndDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceptionistSchedule.AvailableStartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReceptionistSchedule.AvailableStartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.AvailableStartTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceptionistSchedule.AvailableEndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReceptionistSchedule.AvailableEndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.AvailableEndTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceptionistSchedule.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ReceptionistSchedule.Status, new SelectList(status, "Status", "Status"), "Select Status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReceptionistSchedule.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListOfReceptionistSchedules")
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

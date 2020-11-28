@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "ReceptionistDetail";
+}
+
+<h2>ReceptionistDetail</h2>
+
+@model IMS_SI.Models.Receptionist
+
+@{
+    ViewBag.Title = "ReceptionistDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Receptionist</li>
+        <li class="active">Receptionist Detail</li>
+    </ol>
+</div>
+
+<h2>Receptionist Detail</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+     
+        @if (Model.Address != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+        }
+
+        @if (Model.PhoneNo != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNo)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BloodGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BloodGroup)
+        </dd>
+        @if (Model.DateOfBirth != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditReceptionists", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ListOfReceptionists")
+</p>
